@@ -1,0 +1,70 @@
+{% if user.is_authenticated and user.is_superuser and user.is_staff %}
+
+<nav class="container container--70">
+    <ul class="nav--actions">
+        <li class="logged-user">
+        Witaj {{ request.user }}
+            <ul class="dropdown">
+                <li><a href="{% url 'profile' %}">Profil</a></li>
+                <li><a href="#">Ustawienia</a></li>
+                <li><a href="/admin/">Panel administratora</a></li>
+                <li><a href="{% url 'logout' %}">Wyloguj</a></li>
+            </ul>
+        </li>
+    </ul>
+
+    <ul>
+        <li><a href="{% url 'landing-page' %}" class="btn btn--without-border">Start</a></li>
+        <li><a href="{% url 'landing-page' %}#steps" class="btn btn--without-border">O co chodzi?</a></li>
+        <li><a href="{% url 'landing-page' %}#about-us" class="btn btn--without-border">O nas</a></li>
+        <li><a href="{% url 'landing-page' %}#help" class="btn btn--without-border">Fundacje i organizacje</a></li>
+        <li><a href="{% url 'add-donation' %}" class="btn btn--without-border">Przekaż dary</a></li>
+        <li><a href="{% url 'my-donations' %}" class="btn btn--without-border">Moje dary</a></li>
+        <li><a href="#contact" class="btn btn--without-border">Kontakt</a></li>
+    </ul>
+</nav>
+
+{% elif user.is_authenticated %}
+
+<nav class="container container--70">
+    <ul class="nav--actions">
+        <li class="logged-user">
+        Witaj {{ request.user }}
+            <ul class="dropdown">
+                <li><a href="{% url 'profile' %}">Profil</a></li>
+                <li><a href="#">Ustawienia</a></li>
+                <li><a href="{% url 'logout' %}">Wyloguj</a></li>
+            </ul>
+        </li>
+    </ul>
+
+    <ul>
+        <li><a href="{% url 'landing-page' %}" class="btn btn--without-border">Start</a></li>
+        <li><a href="{% url 'landing-page' %}#steps" class="btn btn--without-border">O co chodzi?</a></li>
+        <li><a href="{% url 'landing-page' %}#about-us" class="btn btn--without-border">O nas</a></li>
+        <li><a href="{% url 'landing-page' %}#help" class="btn btn--without-border">Fundacje i organizacje</a></li>
+        <li><a href="{% url 'add-donation' %}" class="btn btn--without-border">Przekaż dary</a></li>
+        <li><a href="{% url 'my-donations' %}" class="btn btn--without-border">Moje dary</a></li>
+        <li><a href="#contact" class="btn btn--without-border">Kontakt</a></li>
+    </ul>
+</nav>
+
+{% else %}
+
+<nav class="container container--70">
+    <ul class="nav--actions">
+        <li><a href="{% url "login" %}">Zaloguj</a></li>
+        <li class="highlighted"><a href={% url 'register' %}>Załóż konto</a></li>
+    </ul>
+
+    <ul>
+        <li><a href="{% url 'landing-page' %}" class="btn btn--without-border">Start</a></li>
+        <li><a href="{% url 'landing-page' %}#steps" class="btn btn--without-border">O co chodzi?</a></li>
+        <li><a href="{% url 'landing-page' %}#about-us" class="btn btn--without-border">O nas</a></li>
+        <li><a href="{% url 'landing-page' %}#help" class="btn btn--without-border">Fundacje i organizacje</a></li>
+        <li><a href="{% url 'add-donation' %}" class="btn btn--without-border">Przekaż dary</a></li>
+        <li><a href="#contact" class="btn btn--without-border">Kontakt</a></li>
+    </ul>
+</nav>
+
+{% endif %}
